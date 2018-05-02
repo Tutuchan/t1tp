@@ -25,7 +25,7 @@ def main():
             sys.exit(0)
         else:
             op.signin_first_time()
-
+            sys.exit(0)
 
     op.signin()
 

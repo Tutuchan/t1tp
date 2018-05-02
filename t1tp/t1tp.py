@@ -15,10 +15,6 @@ class OnePassword:
     def __init__(self, verbose=False):
 
         self._verbose = verbose
-
-        if not self.check_op_config():
-            self.signin_first_time()
-
         self._token = None
         self._expiration = None
 
