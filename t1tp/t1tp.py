@@ -12,7 +12,9 @@ from datetime import timedelta
 class OnePassword:
     _token_path = os.path.join(Path.home(), ".op", "token")
 
-    def __init__(self):
+    def __init__(self, verbose=False):
+
+        self._verbose = verbose
 
         if not self.check_op_config():
             self.signin_first_time()
@@ -57,10 +59,12 @@ class OnePassword:
             if self._expiration > datetime.now():
                 return True
             else:
-                print("Credentials expired !")
+                if self._verbose:
+                    print("Credentials expired !")
                 return False
         except IOError:
-            print("Temporary credentials do not exist, creating file ...")
+            if self._verbose:
+                print("Temporary credentials do not exist, creating file ...")
 
         return False
 
@@ -82,12 +86,11 @@ class OnePassword:
 
         return True
 
-    @staticmethod
-    def signin_first_time():
+    def signin_first_time(self):
         """Signin to the 1Password service for the first time"""
 
-        print("Signin in with the 1Password op CLI for the first time, your password may be asked for twice !")
-
+        if self._verbose:
+            print("Signin in with the 1Password op CLI for the first time, your password may be asked for twice !")
 
         email = input("Enter your 1Password email: ")
         key = input("Enter your 1Password master key: ")
