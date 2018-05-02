@@ -16,6 +16,14 @@ cd t1tp
 pip install .
 ```
 
+## 1Password configuration
+
+You can add TOTP on a 1Password item by clicking Edit, then the triple dots on the right side, near to the Section field: 
+
+![](docs/1p.png)
+
+Use the security phrase provided by your service and save your changes. Your TOTP should start appearing there.
+
 ## Usage
 
 ```
