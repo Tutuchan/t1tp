@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='t1tp',
-    version='0.1.0',
+    version='0.1.1',
     author='Pierre Formont',
     author_email='pierre.formont@gmail.com',
     description='Python library to retrieve one-time passwords from 1Password',
