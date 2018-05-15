@@ -98,17 +98,8 @@ class OnePassword:
     def get_token(self, service):
         """Get the MFA token for a service"""
 
-        # `op` provides `op get totp <item>` but it does not match on the exact <item> name
-        # contrary to `op get item <item>`
-        item = subprocess.check_output(
-            ["op", "get", "item", service, "--session={}".format(self._token)],
-            universal_newlines=True
-        ).rstrip()
-
-        uuid = json.loads(item)['uuid']
-
         totp = subprocess.check_output(
-            ["op", "get", "totp", uuid, "--session={}".format(self._token)],
+            ["op", "get", "totp", service, "--session={}".format(self._token)],
             universal_newlines=True
         ).rstrip()
 
